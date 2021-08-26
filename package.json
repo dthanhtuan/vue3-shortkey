@@ -14,10 +14,6 @@
     "type": "git",
     "url": "git+https://github.com/iFgR/vue-shortkey.git"
   },
-  "dependencies": {
-    "custom-event-polyfill": "^1.0.7",
-    "element-matches": "^0.1.2"
-  },
   "keywords": [
     "vue",
     "vue-shortkey",
@@ -26,7 +22,6 @@
   ],
   "homepage": "https://github.com/iFgR/vue-shortkey/blob/master/README.md",
   "devDependencies": {
-    "array.prototype.find": "^2.0.4",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
     "babel-preset-es2015": "^6.0.0",
