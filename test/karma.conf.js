@@ -5,7 +5,7 @@ var webpackConfig = require('../build/webpack.config.js');
 webpackConfig.devtool = false;
 webpackConfig.resolve = {
   alias: {
-    'vue$': 'vue/dist/vue.esm.js'
+    vue: 'vue/dist/vue.esm-bundler.js',
   }
 };
 
