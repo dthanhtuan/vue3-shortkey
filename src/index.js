@@ -102,33 +102,22 @@ const vueHotKey = () => {
       });
     },
     addEventListeners(el, that) {
-      el.addEventListener(
-          'keydown',
-          (pKey) => {
-            const focusedElementFunction = that.focusedElementFunction(el);
-            const decodedKey = that.decodeKey(pKey);
-            const keyFunction = focusedElementFunction[decodedKey];
-            if (that.availableElement(keyFunction)) {
-              pKey.preventDefault();
-              pKey.stopPropagation();
-            }
-          },
-          true,
-      );
-      el.addEventListener(
-          'keyup',
-          (pKey) => {
-            const focusedElementFunction = that.focusedElementFunction(el);
-            const decodedKey = that.decodeKey(pKey);
-            const keyFunction = focusedElementFunction[decodedKey];
-            if (that.availableElement(keyFunction)) {
-              pKey.preventDefault();
-              pKey.stopPropagation();
-              that.dispatchShortkeyEvent(keyFunction);
-            }
-          },
-          true,
-      );
+      el.addEventListener('keydown', (pKey) => {
+        if (pKey.repeat) {
+          return;
+        }
+        const focusedElementFunction = that.focusedElementFunction(el);
+        const decodedKey = that.decodeKey(pKey);
+        if (decodedKey !== 'Enter' && decodedKey.length === 1) {
+          return;
+        }
+        const keyFunction = focusedElementFunction[decodedKey];
+        if (that.availableElement(keyFunction)) {
+          pKey.preventDefault();
+          pKey.stopPropagation();
+          that.dispatchShortkeyEvent(keyFunction);
+        }
+      });
     },
   };
 };
